@@ -6,10 +6,10 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @SpringBootApplication
 @EnableSpringDataWebSupport(pageSerializationMode = EnableSpringDataWebSupport.PageSerializationMode.VIA_DTO)
-public class TaskListApplication {
+public class EstudosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TaskListApplication.class, args);
+		SpringApplication.run(EstudosApplication.class, args);
 	}
 
 }
