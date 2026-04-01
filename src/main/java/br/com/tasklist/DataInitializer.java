@@ -28,9 +28,7 @@ public class DataInitializer implements CommandLineRunner {
 
         System.out.println("Iniciando a carga de dados de teste...");
 
-        // ==========================================
-        // CRIANDO USUÁRIO 1
-        // ==========================================
+
         Usuario usuario1 = Usuario.builder()
                 .nome("Pedro Henrique")
                 .email("pedro@estudos.com.br")
@@ -70,17 +68,13 @@ public class DataInitializer implements CommandLineRunner {
         Tarefa tarefa4 = Tarefa.builder()
                 .titulo("Fazer compras")
                 .descricao("Comprar itens para o café da manhã.")
-                .dataPrazo(LocalDate.now().minusDays(2)) // VENCIDA (2 dias atrás)
+                .dataPrazo(LocalDate.now().minusDays(2))
                 .usuario(usuario2)
                 .build();
 
         usuario2.setTarefas(List.of(tarefa4));
 
-        // ==========================================
-        // SALVANDO NO BANCO DE DADOS
-        // ==========================================
-        // O saveAll do repositório de usuário também fará o insert das tarefas
-        // graças ao `cascade = CascadeType.ALL` que você colocou na entidade Usuario.
+
         usuarioRepository.saveAll(List.of(usuario1, usuario2));
 
         System.out.println("Carga de dados finalizada com sucesso!");
