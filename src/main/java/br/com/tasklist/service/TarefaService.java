@@ -91,9 +91,9 @@ public class TarefaService {
 
         Page<TarefaResponse> page = tarefaRepository.findAllByEstaConcluida(estaConcluida,pageable).map(tarefaMapper::toRes);
 
-        String condicional = estaConcluida ? "Tarefas que estão concluidas encontradas." : "Tarefas que estão pendentes.";
+        String mensagem = estaConcluida ? "Tarefas que estão concluidas encontradas." : "Tarefas que estão pendentes.";
 
-        return new ApiResponse<>(condicional,
+        return new ApiResponse<>(mensagem,
                 HttpStatus.OK.value(),
                 page
         );
@@ -123,11 +123,14 @@ public class TarefaService {
         }
 
 
-        String condicional = estaConcluida ? "Tarefa está concluida." : "Tarefa está pendente.";
+        String mensagem = estaConcluida ? "Tarefa está concluida." : "Tarefa está pendente.";
 
-        return new ApiResponse<>(condicional,
+        Tarefa tarefaSalva = tarefaRepository.save(tarefaEncontrada);
+
+
+        return new ApiResponse<>(mensagem,
                 HttpStatus.OK.value(),
-                tarefaMapper.toRes(tarefaEncontrada)
+                tarefaMapper.toRes(tarefaSalva)
         );
     }
 }
