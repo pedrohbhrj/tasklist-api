@@ -42,11 +42,12 @@ public class Tarefa {
     private LocalDateTime criadoEm;
 
     @UpdateTimestamp
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false)
     private LocalDateTime atualizadoEm;
 
     @PrePersist
     private void prePersist(){
         this.estaConcluida = false;
     }
+
 }
