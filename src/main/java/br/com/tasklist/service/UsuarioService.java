@@ -1,6 +1,7 @@
 package br.com.tasklist.service;
 
 
+import br.com.tasklist.dto.request.UsuarioAttRequest;
 import br.com.tasklist.dto.response.ApiResponse;
 import br.com.tasklist.dto.request.UsuarioRequest;
 import br.com.tasklist.dto.response.UsuarioResponse;
@@ -43,7 +44,7 @@ public class UsuarioService {
         );
     }
     @Transactional
-    public ApiResponse<UsuarioResponse> atualizar(Long id,UsuarioRequest request){
+    public ApiResponse<UsuarioResponse> atualizar(Long id,UsuarioAttRequest request){
         Usuario usuarioEncontrado = usuarioRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuario não encontrado."));
 
         Usuario usuarioMergeado = this.mergeUsuario(request,usuarioEncontrado);
@@ -84,7 +85,7 @@ public class UsuarioService {
                 usuarioMapper.toResponse(usuario));
     }
 
-    private Usuario mergeUsuario(UsuarioRequest request,Usuario usuario){
+    private Usuario mergeUsuario(UsuarioAttRequest request, Usuario usuario){
         if(request.cpf() != null && !request.cpf().equals(usuario.getCpf())){
             usuario.setCpf(request.cpf());
         }

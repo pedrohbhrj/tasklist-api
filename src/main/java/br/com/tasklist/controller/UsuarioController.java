@@ -1,5 +1,6 @@
 package br.com.tasklist.controller;
 
+import br.com.tasklist.dto.request.UsuarioAttRequest;
 import br.com.tasklist.dto.response.ApiResponse;
 import br.com.tasklist.dto.request.UsuarioRequest;
 import br.com.tasklist.dto.response.UsuarioResponse;
@@ -31,7 +32,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<UsuarioResponse>> atualizar(@PathVariable Long id,@RequestBody @Valid UsuarioRequest request){
+    public ResponseEntity<ApiResponse<UsuarioResponse>> atualizar(@PathVariable Long id,@RequestBody @Valid UsuarioAttRequest request){
         return ResponseEntity.
                 status(HttpStatus.OK)
                 .body(service.atualizar(id,request));
