@@ -33,7 +33,7 @@ public class TarefaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletar(@PathVariable Long id){
         return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
+                .status(HttpStatus.OK)
                 .body(service.deletar(id));
     }
 

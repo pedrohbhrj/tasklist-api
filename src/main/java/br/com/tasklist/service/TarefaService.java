@@ -59,7 +59,7 @@ public class TarefaService {
                         .orElseThrow(() -> new NotFoundException("Tarefa não encontrada."));
         tarefaRepository.delete(tarefaCriada);
         return new ApiResponse<>("Tarefa deletada com sucesso.",
-                HttpStatus.NO_CONTENT.value(),
+                HttpStatus.OK.value(),
                 null
         );
     }
