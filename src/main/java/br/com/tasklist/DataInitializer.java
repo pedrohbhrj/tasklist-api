@@ -21,37 +21,31 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (usuarioRepository.count() > 0) {
-            System.out.println("Banco de dados já contém registros. Pulando a inicialização.");
-            return;
-        }
-
-        System.out.println("Iniciando a carga de dados de teste...");
-
+        if (usuarioRepository.count() > 0) return;
 
         Usuario usuario1 = Usuario.builder()
                 .nome("Pedro Henrique")
-                .email("pedro@estudos.com.br")
+                .email("pedro@gmail.com.br")
                 .cpf("111.222.333-44")
                 .build();
 
         Tarefa tarefa1 = Tarefa.builder()
-                .titulo("Consertar POM do Maven")
-                .descricao("Ajustar dependências do MapStruct e codificação UTF-8.")
+                .titulo("Estudar matérias da escola")
+                .descricao("Matemática.")
                 .dataPrazo(LocalDate.now().minusDays(5))
                 .usuario(usuario1)
                 .build();
 
         Tarefa tarefa2 = Tarefa.builder()
-                .titulo("Estudar Spring Data JPA")
-                .descricao("Aprender sobre anotações e relacionamentos.")
+                .titulo("Malhar.")
+                .descricao("Malhar costas e biceps.")
                 .dataPrazo(LocalDate.now())
                 .usuario(usuario1)
                 .build();
 
         Tarefa tarefa3 = Tarefa.builder()
-                .titulo("Criar testes automatizados")
-                .descricao("Implementar JUnit com Mockito.")
+                .titulo("Comprar moveis para o quarto.")
+                .descricao("Comprar com o menor preço possivel.")
                 .dataPrazo(LocalDate.now().plusDays(10))
                 .usuario(usuario1)
                 .build();
@@ -61,7 +55,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Usuario usuario2 = Usuario.builder()
                 .nome("Maria Silva")
-                .email("maria@estudos.com.br")
+                .email("maria@gmail.com.br")
                 .cpf("555.666.777-88")
                 .build();
 
@@ -73,10 +67,7 @@ public class DataInitializer implements CommandLineRunner {
                 .build();
 
         usuario2.setTarefas(List.of(tarefa4));
-
-
         usuarioRepository.saveAll(List.of(usuario1, usuario2));
 
-        System.out.println("Carga de dados finalizada com sucesso!");
     }
 }
