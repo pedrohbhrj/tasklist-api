@@ -17,11 +17,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuarioService {
+public class UsuarioService{
 
     private final UsuarioRepository usuarioRepository;
 
     private final UsuarioMapper usuarioMapper;
+
 
     public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapper usuarioMapper) {
         this.usuarioRepository = usuarioRepository;
@@ -47,9 +48,9 @@ public class UsuarioService {
     public ApiResponse<UsuarioResponse> atualizar(Long id,UsuarioAttRequest request){
         Usuario usuarioEncontrado = usuarioRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuario não encontrado."));
 
-        Usuario usuarioMergeado = this.mergeUsuario(request,usuarioEncontrado);
+        usuarioMapper.mergeUsuario(request,usuarioEncontrado);
 
-        Usuario usuarioSalvo = usuarioRepository.save(usuarioMergeado);
+        Usuario usuarioSalvo = usuarioRepository.save(usuarioEncontrado);
 
         return new ApiResponse<>(
                 "Usuario atualizado com sucesso",
@@ -85,20 +86,4 @@ public class UsuarioService {
                 usuarioMapper.toResponse(usuario));
     }
 
-    private Usuario mergeUsuario(UsuarioAttRequest request, Usuario usuario){
-        if(request.cpf() != null && !request.cpf().equals(usuario.getCpf())){
-            usuario.setCpf(request.cpf());
-        }
-        if(request.email() != null && !request.email().equals(usuario.getEmail())){
-            usuario.setEmail(request.email());
-        }
-        if(request.nome() != null && !request.nome().equals(usuario.getNome())){
-            usuario.setNome(request.nome());
-        }
-        if(request.imgUrlPerfil() != null && !request.imgUrlPerfil().equals(usuario.getImgUrlPerfil())){
-            usuario.setImgUrlPerfil(request.imgUrlPerfil());
-        }
-
-        return usuario;
-    }
 }
