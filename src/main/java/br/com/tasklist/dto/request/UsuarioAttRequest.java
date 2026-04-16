@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 public record UsuarioAttRequest(@Size(max = 150,message = "Deve ter no maximo 150 caracteres.") String nome,
                                 @Email(message = "Formato inválido.") String email,
                                 @CPF(message = "Formato inválido") String cpf,
