@@ -116,10 +116,7 @@ Maven
 PostgreSQL rodando localmente (porta 5432)
 
 Passos para Execução
-Clone o repositório:
-
-Bash
-git clone [https://github.com/pedrohbhrj/tasklist-api.git](https://github.com/pedrohbhrj/tasklist-api.git)
+Clone o repositório: git clone (https://github.com/pedrohbhrj/tasklist-api.git)
 Configure o Banco de Dados:
 Crie um banco de dados no PostgreSQL com o nome de tasksv3 (ou um nome de sua preferência).
 Certifique-se de que as credenciais no arquivo src/main/resources/application.properties correspondem à sua instalação local:
@@ -132,7 +129,6 @@ Nota: Nunca versione senhas reais em repositórios públicos.
 Compile o projeto e gere os Mappers:
 Na raiz do projeto, execute o comando Maven para compilar as classes (e gerar as implementações do MapStruct):
 
-Bash
 mvn clean install
 (Opcional) Execute os Testes Unitários:
 Para rodar a suíte de testes construída com JUnit e Mockito:
