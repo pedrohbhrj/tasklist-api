@@ -46,3 +46,57 @@ br.com.tasklist
 ├── service/           # Regras de negócio
 └── DataInitializer    # Classe (CommandLineRunner) para popular o banco em ambiente de dev
 ```
+⚙️ Como Executar o Projeto
+Pré-requisitos
+Java 21+
+
+Maven
+
+PostgreSQL rodando localmente (porta 5432)
+
+Passos para Execução
+Clone o repositório: git clone(https://github.com/pedrohbhrj/tasklist-api.git)
+Configure o Banco de Dados:
+Crie um banco de dados no PostgreSQL com o nome de tasksv3 (ou um nome de sua preferência).
+Certifique-se de que as credenciais no arquivo src/main/resources/application.properties correspondem à sua instalação local:
+
+Properties
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+Nota: Nunca versione senhas reais em repositórios públicos.
+
+Compile o projeto e gere os Mappers:
+Na raiz do projeto, execute o comando Maven para compilar as classes (e gerar as implementações do MapStruct):
+
+Bash
+mvn clean install
+(Opcional) Execute os Testes Unitários:
+Para rodar a suíte de testes construída com JUnit e Mockito:
+
+Bash
+mvn test
+Inicie a aplicação:
+Inicie a aplicação executando a classe TasklistApplication pela sua IDE ou via terminal:
+
+Bash
+mvn spring-boot:run
+O DataInitializer já irá inserir dados de teste no banco automaticamente na primeira execução.
+
+🔗 Principais Endpoints
+A API expõe diversas rotas, todas encapsuladas no padrão ApiResponse<T>. Algumas das principais são:
+
+Usuários (/api/usuario)
+POST /api/usuario - Cria um novo usuário.
+
+GET /api/usuario/todos - Retorna lista paginada de usuários.
+
+PUT /api/usuario/{id} - Atualiza dados do usuário (merge seletivo).
+
+Tarefas (/api/tarefa)
+POST /api/tarefa/{usuarioId} - Cria uma tarefa vinculada a um usuário.
+
+GET /api/tarefa/atrasadas - Retorna lista paginada de tarefas cujo prazo expirou.
+
+PATCH /api/tarefa/{id}?estaConcluida=true - Atualiza apenas o status de conclusão da tarefa.
+
+GET /api/tarefa/{estaConcluida} - Filtra tarefas por status de conclusão.
