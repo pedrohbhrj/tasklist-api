@@ -1,4 +1,4 @@
-package br.com.estudos;
+package br.com.tasklist;
 
 
 import br.com.tasklist.dto.request.UsuarioAttRequest;
@@ -22,7 +22,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;

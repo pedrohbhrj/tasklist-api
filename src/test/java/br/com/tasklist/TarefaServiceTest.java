@@ -1,4 +1,4 @@
-package br.com.estudos;
+package br.com.tasklist;
 
 
 import br.com.tasklist.dto.request.TarefaRequest;

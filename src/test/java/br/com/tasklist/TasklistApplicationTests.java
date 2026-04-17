@@ -1,10 +1,10 @@
-package br.com.estudos;
+package br.com.tasklist;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EstudosApplicationTests {
+class TasklistApplicationTests {
 
 	@Test
 	void contextLoads() {
